@@ -6,13 +6,13 @@ const get = () => {
   return bookmodel.find();
 };
 const getByid = ({ _id }) => {
-  return bookmodel.findOne();
+  return bookmodel.findOne({ _id });
 };
-const updateByid = ({ _id }) => {
-  return bookmodel.updateOne();
+const updateByid = ({ _id }, payload) => {
+  return bookmodel.updateOne({ _id }, payload);
 };
 const removeByid = ({ _id }) => {
-  return bookmodel.deleteOne();
+  return bookmodel.deleteOne({ _id });
 };
 
-modules.exports = { create, get, getByid, updateByid, removeByid };
+module.exports = { create, get, getByid, updateByid, removeByid };

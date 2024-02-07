@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bookcontroller = require("./book.controller");
+const { validate } = require("./book.validator");
 router.get("/", (req, res, next) => {
   try {
     result = bookcontroller.get();
@@ -16,7 +17,7 @@ router.get("/", (req, res, next) => {
     next(e);
   }
 });
-router.post("/", (req, res, next) => {
+router.post("/", validate, (req, res, next) => {
   try {
     result = bookcontroller.create(req.body);
     res.json({ msg: result });
